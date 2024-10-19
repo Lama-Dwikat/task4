@@ -1,0 +1,104 @@
+<DOCTYPE HTML5>
+
+<head>
+
+<title>java script </title>
+
+
+</head>
+<body>
+
+<script>
+ let user;
+    let mymap=new Map();
+    let array=[];
+
+function add(){
+let  task=prompt("Add Your Task");
+mymap.set(task,"Uncompleted");
+array.push(task);
+console.log("Task Added :"+task);
+}
+
+function view(){
+   for(let i=0; i<array.length;i++){
+    console.log(i+" : "+array[i]+" - [" +mymap.get(array[i])+ " ] \n");
+    
+   }
+}
+
+
+
+function toggle(){
+        let x=parseInt(prompt("Enter Task Id"));
+        if(x>=0 && x<array.length){
+            if (mymap.get(array[x])=="Uncompleted"){
+            mymap.set(array[x],"Completed");
+            console.log("Task: " +array[x]+" is completed");}
+          else{ mymap.set(array[x],"Uncompleted");
+            console.log("Task toggled: " +array[x]+" is  uncompleted");}
+        }
+    }
+
+
+    function edit(){
+        let x=parseInt(prompt("Enter Task Id"));
+        if (x>=0&& x<array.length){
+        let newtask=prompt("Do Edition you want");
+        let oldtask=array[x];
+        array[x]=newtask;
+        mymap.set(array[x],mymap.get(oldtask));
+        mymap.delete(oldtask);}
+        console.log("Task Updated Successfully");
+    }
+
+function  deletee(){
+    let y=parseInt(prompt("Enter Task Id"));
+    if(y>=0 && y<array.length){
+        mymap.delete(array[y]);
+        array.splice([y],1);
+    }
+console.log("Task deleted successfully");
+}
+ 
+    while(user !=6){
+   console.log(" Task Manager Menu\n");
+   console.log("1- Add Task\n");
+   console.log("2- View Tasks\n");
+   console.log("3- Toggle Task Completion\n");
+   console.log("4- Edit Task\n");
+   console.log("5- Delete Task\n");
+   console.log("6- Exit \n");   
+   user=parseInt(prompt("please enter your choice"));
+switch(user){
+case 1: 
+    add();
+    break;
+
+case 2:
+   view();
+   break;
+
+case 3:
+   toggle();
+   break;
+
+case 4:
+  edit();
+  break;
+
+case 5:
+    deletee();
+    break;
+
+case 6:
+    break;
+
+  default:
+    console.log("you entered wrong choice");
+break;
+   
+}}
+
+</script>
+</body>
